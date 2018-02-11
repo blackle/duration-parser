@@ -6,18 +6,18 @@ mod tests {
 
 		fn five_minutes() {
 				let result = parse_duration(&String::from("5m")).unwrap();
-				assert!(result == 5 * 1000*60);
+				assert!(result == 5 * 60);
 		}
 
 		#[test]
 		fn combination() {
 				let result = parse_duration(&String::from("1y2w5d3h42m10s")).unwrap();
-				assert!(result == 1 * 1000*60*60*24*365 + 2 * 1000*60*60*24*7 + 5 * 1000*60*60*24 + 3 * 1000*60*60 + 42 * 1000*60 + 10 * 1000);
+				assert!(result == 1 * 60*60*24*365 + 2 * 60*60*24*7 + 5 * 60*60*24 + 3 * 60*60 + 42 * 60 + 10);
 		}
 
 		#[test]
 		fn overflow() {
-				let err = parse_duration(&String::from("10000000000y")).unwrap_err();
+				let err = parse_duration(&String::from("1000000000000y")).unwrap_err();
 				assert!(err == Error::Overflow);
 		}
 

@@ -1,21 +1,20 @@
 use regex::Regex;
 use error::Error;
 
-const MS_IN_SEC : u64 = 1000;
-const MS_IN_MIN : u64 = MS_IN_SEC * 60;
-const MS_IN_HR : u64 = MS_IN_MIN * 60;
-const MS_IN_DAY : u64 = MS_IN_HR * 24;
-const MS_IN_WK : u64 = MS_IN_DAY * 7;
-const MS_IN_YR : u64 = MS_IN_DAY * 365;
+const SEC_IN_MIN : u64 = 60;
+const SEC_IN_HR : u64 = SEC_IN_MIN * 60;
+const SEC_IN_DAY : u64 = SEC_IN_HR * 24;
+const SEC_IN_WK : u64 = SEC_IN_DAY * 7;
+const SEC_IN_YR : u64 = SEC_IN_DAY * 365;
 
 fn multiplier_from_unit(units : &str) -> Result<u64, Error> {
 	return match units.as_ref() {
-		"s" => Ok(MS_IN_SEC),
-		"m" => Ok(MS_IN_MIN),
-		"h" => Ok(MS_IN_HR),
-		"d" => Ok(MS_IN_DAY),
-		"w" => Ok(MS_IN_WK),
-		"y" => Ok(MS_IN_YR),
+		"s" => Ok(1),
+		"m" => Ok(SEC_IN_MIN),
+		"h" => Ok(SEC_IN_HR),
+		"d" => Ok(SEC_IN_DAY),
+		"w" => Ok(SEC_IN_WK),
+		"y" => Ok(SEC_IN_YR),
 		_ => Err(Error::UnknownSuffix)
 	}
 }

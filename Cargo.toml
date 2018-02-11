@@ -1,9 +1,9 @@
 [package]
 name = "duration-parser"
-description = "A single-function, overflow-aware rust library for parsing strings of the form \"1y2w5d3h42m10s\" into milliseconds"
+description = "A single-function, overflow-aware rust library for parsing strings of the form \"1y2w5d3h42m10s\" into seconds"
 repository = "https://github.com/blackle/duration-parser"
 license = "MIT"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["blackle <isabelle@blackle-mori.com>"]
 
 [dependencies]
