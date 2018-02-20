@@ -8,7 +8,7 @@ const SEC_IN_WK : u64 = SEC_IN_DAY * 7;
 const SEC_IN_YR : u64 = SEC_IN_DAY * 365;
 
 fn multiplier_from_unit(units : &str) -> Result<u64, Error> {
-	return match units.as_ref() {
+	match units {
 		"s" => Ok(1),
 		"m" => Ok(SEC_IN_MIN),
 		"h" => Ok(SEC_IN_HR),
@@ -19,7 +19,7 @@ fn multiplier_from_unit(units : &str) -> Result<u64, Error> {
 	}
 }
 
-pub fn parse_duration(string : &String) -> Result<u64, Error> {
+pub fn parse_duration(string : &str) -> Result<u64, Error> {
 	lazy_static! {
 		static ref TIME_RE: Regex = Regex::new(r"(?P<value>\d+)(?P<units>[a-z])").unwrap();
 	}
@@ -58,5 +58,5 @@ pub fn parse_duration(string : &String) -> Result<u64, Error> {
 		return Err(Error::UnparsableExtras);
 	}
 
-	return Ok(total_duration_in_ms);
+	Ok(total_duration_in_ms)
 }
